@@ -9,6 +9,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AvatarField;
 
 class ClientCrudController extends AbstractCrudController
 {
@@ -24,11 +25,13 @@ class ClientCrudController extends AbstractCrudController
             ->onlyOnIndex()
             ->onlyOnDetail();
         yield TextField::new('name');
+        yield AvatarField::new('logo');
+
         yield TextField::new('siren');
         yield TextField::new('interlocutaire');
-        yield TextField::new('phone');
+        yield TextField::new('phone', 'Téléphone');
         yield TextField::new('mail');
-        yield TextField::new('adress');
+        yield TextField::new('adress', 'Adresse');
         yield BooleanField::new('status');
         yield AssociationField::new('dossiers')->setFormTypeOption('by_reference', false);
     }
